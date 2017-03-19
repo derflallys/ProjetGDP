@@ -13,12 +13,10 @@
 
 
 -- Export de la structure de la base pour projetgdp
-DROP DATABASE IF EXISTS `projetgdp`;
 CREATE DATABASE IF NOT EXISTS `projetgdp` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `projetgdp`;
 
 -- Export de la structure de la table projetgdp. donateurs
-DROP TABLE IF EXISTS `donateurs`;
 CREATE TABLE IF NOT EXISTS `donateurs` (
   `id_donateu` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) NOT NULL DEFAULT '0',
@@ -27,12 +25,12 @@ CREATE TABLE IF NOT EXISTS `donateurs` (
   `codepostal` varchar(30) NOT NULL DEFAULT '0',
   `type_donateurs` varchar(30) NOT NULL DEFAULT '0',
   `photo_user` varchar(30) NOT NULL DEFAULT '0',
+  `password` varchar(50) NOT NULL,
   PRIMARY KEY (`id_donateu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Association Sociale';
 
 -- Les données exportées n'étaient pas sélectionnées.
 -- Export de la structure de la table projetgdp. fournisseurs
-DROP TABLE IF EXISTS `fournisseurs`;
 CREATE TABLE IF NOT EXISTS `fournisseurs` (
   `id_restaurant` int(11) NOT NULL AUTO_INCREMENT,
   `nom_restaurant` varchar(50) NOT NULL DEFAULT '0',
@@ -41,12 +39,12 @@ CREATE TABLE IF NOT EXISTS `fournisseurs` (
   `email` varchar(50) NOT NULL DEFAULT '0',
   `contrat` char(5) NOT NULL DEFAULT '0',
   `type_restaurant` varchar(50) NOT NULL DEFAULT '0',
+  `password` varchar(50) NOT NULL,
   PRIMARY KEY (`id_restaurant`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Ils s''agient des restaurants !';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='Ils s''agient des restaurants !';
 
 -- Les données exportées n'étaient pas sélectionnées.
 -- Export de la structure de la table projetgdp. note_fournisseurs
-DROP TABLE IF EXISTS `note_fournisseurs`;
 CREATE TABLE IF NOT EXISTS `note_fournisseurs` (
   `id_fournisseurs` int(11) NOT NULL,
   `id_donateur` int(11) NOT NULL,
@@ -56,7 +54,6 @@ CREATE TABLE IF NOT EXISTS `note_fournisseurs` (
 
 -- Les données exportées n'étaient pas sélectionnées.
 -- Export de la structure de la table projetgdp. publication
-DROP TABLE IF EXISTS `publication`;
 CREATE TABLE IF NOT EXISTS `publication` (
   `id_publication` int(11) NOT NULL AUTO_INCREMENT,
   `contenu` text NOT NULL,
@@ -70,11 +67,10 @@ CREATE TABLE IF NOT EXISTS `publication` (
   PRIMARY KEY (`id_publication`),
   KEY `publicateur` (`publicateur`),
   CONSTRAINT `FK__fournisseurs` FOREIGN KEY (`publicateur`) REFERENCES `fournisseurs` (`id_restaurant`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- Les données exportées n'étaient pas sélectionnées.
 -- Export de la structure de la table projetgdp. vue_publication
-DROP TABLE IF EXISTS `vue_publication`;
 CREATE TABLE IF NOT EXISTS `vue_publication` (
   `id_publication` int(11) NOT NULL,
   `id_donateur` int(11) NOT NULL,
