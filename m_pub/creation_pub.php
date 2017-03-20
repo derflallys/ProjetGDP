@@ -10,11 +10,19 @@
     $connexion=connexionBd();
     if(isset($_POST['valider']))
     {
-        echo $_FILES['image']['name'];
+
         $sql="INSERT INTO projetgdp.publication(contenu, titre_publication, image_publication, date_publication, quantite, etat, duree_validite, publicateur)
         VALUES (:contenu,:titre,:image,:date_pub,:quantite,:etat,:duree,:idpub)";
         $pub=$connexion->prepare($sql);
         $pub->execute(array('contenu'=>$_POST['contenu'],'titre'=>$_POST['titre'],'image'=>"img/".$_FILES['image']['name'],'date_pub'=>date("Y-m-d H:i:s"),'quantite'=>$_POST['quantite'],'etat'=>$_POST['etat'],'duree'=>$_POST['duree'],'idpub'=>$_SERVER['id_restaurant']));
+        $target_dir = "img/";
+        $target_file = $target_dir . basename($_FILES["image"]["name"]);
+
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+            $message="Article bien Enrigistré";
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
     }
 
 ?>
@@ -35,7 +43,7 @@
 <?php include "../core/header.php" ;?>
     <div class="container">
         <div class="row">
-            <form class="col s12" action="#" method="post">
+            <form class="col s12" action="#" method="post" enctype="multipart/form-data">
                 <div class="col s2"></div>
                 <div class="col s8">
                     <div class="row">
@@ -62,13 +70,14 @@
                             </select>
                         </div>
                         <div class="file-field input-field col s12">
+
                             <div class="btn">
                                 <span>Image</span>
-                                <input type="file" name="image" accept="image/*" >
-                            </div><!--
+                                <input type="file"  name="image" accept="image/*" >
+                            </div>
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" name="image" type="text">
-                            </div> -->
+                            </div>
                         </div>
                         <div class="input-field col s12">
                             <textarea id="description" name="contenu" class="materialize-textarea" required></textarea>
