@@ -1,23 +1,30 @@
 <?php
+session_start();
 include "../core/connexionBd.php";
 include "../core/utile.php";
 $connexion = connexionBd();
+$bd= BD;
 if(isset($_GET['pub'])) {
-    $sql = "SELECT * FROM projetgdp.publication where id_publication=:id";
+    $sql = "SELECT * FROM $bd.publication where id_publication=:id";
     $resultat_pub = $connexion->prepare($sql);
     $resultat_pub->execute(array('id' => $_GET['pub']));
     $res_pub = $resultat_pub->fetch(PDO::FETCH_ASSOC);
     //print_r($res);
     //Fournissseurs
-    $sql = "SELECT * FROM projetgdp.fournisseurs where id_restaurant=:id";
+    $sql = "SELECT * FROM $bd.fournisseurs where id_restaurant=:id";
     $resultatresto=$connexion->prepare($sql);
     $resultatresto->execute(array('id'=>$res_pub["publicateur"]));
     $resresto = $resultatresto->fetch(PDO::FETCH_ASSOC);
     //Calcul de la note
-    $sql = "SELECT SUM(note) as note FROM projetgdp.note_fournisseurs where id_fournisseurs=:id";
+    $sql = "SELECT AVG(note) as note FROM $bd.note_fournisseurs where id_fournisseurs=:id";
     $resultatnote=$connexion->prepare($sql);
     $resultatnote->execute(array('id'=>$res_pub["publicateur"]));
     $resnote = $resultatnote->fetch(PDO::FETCH_ASSOC);
+
+    $_SESSION['id_pub']=$_GET['pub'];
+    $_SESSION['id_resto']=$res_pub["publicateur"];
+    $_SESSION['id_donateur']=2;
+
     if (!empty($resnote)) {
 
         $note=$resnote['note'];
@@ -82,6 +89,25 @@ else
                         <li class="collection-item dismissable"><div><b class="left-align">Note :</b><a href="#!" class="secondary-content"><b>'.$note.'/10</a></b></div></li>
                     </ul> '
                 ;?>
+                <div class="fixed-action-btn">
+                    <a class="btn-floating btn-large red">
+                        <i class="large material-icons">plus_one</i>
+                    </a>
+                    <ul>
+
+                            <li><a value="1"  class="btn-floating red val_note"><i class="material-icons">filter_1</i></a></li>
+                            <li><a value="2"  class="btn-floating red val_note"><i class="material-icons">filter_2</i></a></li>
+                            <li><a value="3"  class="btn-floating red val_note"><i class="material-icons">filter_3</i></a></li>
+                            <li><a value="4"  class="btn-floating red val_note"><i class="material-icons">filter_4</i></a></li>
+                            <li><a value="5"  class="btn-floating red val_note"><i class="material-icons">filter_5</i></a></li>
+                            <li><a value="6"  class="btn-floating red val_note"><i class="material-icons">filter_6</i></a></li>
+                            <li><a value="7"  class="btn-floating red val_note"><i class="material-icons">filter_7</i></a></li>
+                            <li><a value="8"  class="btn-floating red val_note"><i class="material-icons">filter_8</i></a></li>
+                            <li><a value="9"  class="btn-floating red val_note"><i class="material-icons">filter_9</i></a></li>
+                            <li><a value="10"  class="btn-floating red val_note"><i class="material-icons">filter_9_plus</i></a></li>
+
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -91,9 +117,11 @@ else
 </body>
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- <script src="../core/js/jquery.min.js"></script> -->
 <script src="../core/js/materialize.js"></script>
-<script src="../core/js/init.js"></script>
 <script src="../core/js/monjs.js"></script>
+<script src="../core/js/init.js"></script>
+
 
 
 </html>

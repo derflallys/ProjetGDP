@@ -5,6 +5,7 @@
  * Date: 18/03/2017
  * Time: 20:50
  */
+setlocale(LC_ALL, 'en_US.UTF8');
 define("SERVEUR","localhost:8080");
 define("USER","root");
 define("MDP","");
@@ -17,10 +18,6 @@ function connexionBd ($hote=SERVEUR,$username=USER,$mdp=MDP,$bd=BD){
         $connex->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         return $connex;
-
-
-
-
     } catch (Exception $e) {
         echo'Erreur : '.$e->getMessage().'<br/>';
         echo 'N° :'.$e->getCode();

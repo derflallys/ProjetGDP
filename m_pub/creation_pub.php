@@ -8,10 +8,11 @@
     $_SERVER['id_restaurant']=1;
     include "../core/connexionBd.php";
     $connexion=connexionBd();
+    $bd= BD;
     if(isset($_POST['valider']))
     {
 
-        $sql="INSERT INTO projetgdp.publication(contenu, titre_publication, image_publication, date_publication, quantite, etat, duree_validite, publicateur)
+        $sql="INSERT INTO $bd.publication(contenu, titre_publication, image_publication, date_publication, quantite, etat, duree_validite, publicateur)
         VALUES (:contenu,:titre,:image,:date_pub,:quantite,:etat,:duree,:idpub)";
         $pub=$connexion->prepare($sql);
         $pub->execute(array('contenu'=>$_POST['contenu'],'titre'=>$_POST['titre'],'image'=>"img/".$_FILES['image']['name'],'date_pub'=>date("Y-m-d H:i:s"),'quantite'=>$_POST['quantite'],'etat'=>$_POST['etat'],'duree'=>$_POST['duree'],'idpub'=>$_SERVER['id_restaurant']));
