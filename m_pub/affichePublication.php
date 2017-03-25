@@ -1,6 +1,6 @@
 <?php
 include "../core/connexionBd.php";
-include "../core/utile.php";
+
 $connexion = connexionBd();
 $bd= BD;
 $sql = "SELECT * FROM $bd.publication  ORDER  BY publication.date_publication DESC ";
