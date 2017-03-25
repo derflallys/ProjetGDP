@@ -101,7 +101,7 @@
 <?php include "core/footer.php" ;?>
 <
 <!--Modal Connexion -->
-<?php include "core/connexion.php" ;?>
+<?php include "core/mes_modals.php";?>
 
 
 

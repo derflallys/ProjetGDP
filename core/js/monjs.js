@@ -12,7 +12,19 @@ $(document).ready(function(){
         e.preventDefault();
         console.log($(this).attr("value"));
        $.get("insert_note.php",{insert:true,note:$(this).attr("value")},function (data) {
-         $('body').load(data);
+           console.log(data);
+         if(data!='exist'){
+             $('body').load(data);
+             var $toastContent = $('<span>Merci d\'avoir noter la publication</span>');
+             Materialize.toast($toastContent, 50000);
+         }
+         else
+         {
+             var $toastContent = $('<span>Vous avez deja note cette publication</span>');
+             Materialize.toast($toastContent, 5000);
+         }
         });
     });
+
+    $()
 });
