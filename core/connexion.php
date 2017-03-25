@@ -44,10 +44,10 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <div class="col s6">
-                                    <a href="m_pub/affichePublication.php" class="waves-effect waves-light btn-large">Donateurs</a>
+                                    <a href="m_users/formulaire_association.php" class="waves-effect waves-light btn-large">Donateurs</a>
                                 </div>
                                 <div class="col s6">
-                                    <a href="#" class="waves-effect waves-light btn-large">Fournisseurs</a>
+                                    <a href="m_users/formulaire_restaurant.php" class="waves-effect waves-light btn-large">Fournisseurs</a>
                                 </div>
                             </div>
                         </div>

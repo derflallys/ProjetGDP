@@ -1,3 +1,8 @@
+//<?php
+//include("../header.php");
+//include 'authentification.php';
+
+?>
 <?php 
 session_start();
 require_once("Connect.php");
@@ -5,17 +10,18 @@ if(isset($_POST['action'])){
 
 
 
-$nom=$_POST['nom'];
-$adresse=$_POST['adresse'];
+$nom_restaurant=$_POST['nom_restaurant'];
+$adresse_restaurant=$_POST['adresse_restaurant'];
 $codepostal=$_POST['codepostal'];
 $password=$_POST['password'];
 $email=$_POST['email'];
 $type_restaurant=$_POST['type_restaurant'];
+$tel=$_POST['tel'];
+$contrat=$_POST['contrat'];
 
 
-
-$insert=$db->prepare(" INSERT INTO fournisseurs(nom_restaurant, adresse_restaurant, codepostal, email, type_restaurant) VALUES (?,?,?,?,?,?)");
-$insert->execute(array($nom,$adresse,$codepostal,$password,$email,$type_restaurant));
+$insert=$db->prepare(" INSERT INTO fournisseurs(nom_restaurant, adresse_restaurant, codepostal, email, contrat,type_restaurant,password,tel) VALUES (?,?,?,?,?,?,?,?)");
+$insert->execute(array($nom_restaurant,$adresse_restaurant,$codepostal,$email,$contrat,$type_restaurant,$password,$tel));
 }
 ?>
 
@@ -44,19 +50,24 @@ $insert->execute(array($nom,$adresse,$codepostal,$password,$email,$type_restaura
 		 <div class="col s8">
 			<div class="row">
 				<div class="input-field col s6">
-					<input placeholder="Placeholder" id="nom"  name ="nom" type="text" class="validate">
+					<input placeholder="Placeholder" id="nom_restaurant"  name ="nom_restaurant" type="text" class="validate">
 					<label for="nom">Nom</label>
 				</div>
 				
 				<div class="input-field col s6">
-					<input placeholder="Placeholder" id="adresse"  name ="adresse" type="text" class="validate">
+					<input placeholder="Placeholder" id="adresse_restaurant"  name ="adresse_restaurant" type="text" class="validate">
 					<label for="adresse">Adresse</label>
 				</div>
 				<div class="input-field col s6">
 					<input id="codepostal" type="text"  name ="codepostal" class="validate">
 					<label for="codepostal">Code Postal</label>
 				</div>
+				<div class="input-field col s6">
+					<input id="tel" type="text"  name ="tel" class="validate">
+					<label for="tel">Telephone</label>
+				</div>
 			
+			   
 				<div class="input-field col s12">
 					<input id="password" type="password"  name="password" class="validate">
 					<label for="password">Password</label>
@@ -74,6 +85,11 @@ $insert->execute(array($nom,$adresse,$codepostal,$password,$email,$type_restaura
 					<input id="type_restaurant" name ="type_restaurant" type="text" class="validate">
 					<label for="type_restaurant">Type de Restaurant</label>
 				</div>
+					<div class="input-field col s12">
+					<input id="contrat" name ="contrat" type="text" class="validate">
+					<label for="contrat">Contrat</label>
+				</div>
+	
 	
 				
 	<button class="btn waves-effect waves-light" type="submit" name="action">Submit

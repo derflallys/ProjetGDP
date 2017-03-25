@@ -1,16 +1,25 @@
+
+<?php
+include "../core/header_home.php"
+//include 'authentification.php';
+
+?>
+
 <?php 
 session_start();
 require_once("Connect.php");
 if(isset($_POST['action'])){
 $nom=$_POST['nom'];
-$adresse=$_POST['adresse'];
+//$adresse=$_POST['adresse'];
 $codepostal=$_POST['codepostal'];
 $password=$_POST['password'];
 $email=$_POST['email'];
 $type_donateurs=$_POST['type_donateurs'];
+$telephone=$_POST['telephone'];
+$photo_user=$_POST['photo_user'];
 
-$insert=$db->prepare(" INSERT INTO fournisseurs(nom_restaurant, adresse_restaurant, codepostal, email,contrat, type_association) VALUES (?,?,?,?,?,?)");
-$insert->execute(array($nom,$codepostal,$password,$email,$type_donateurs,$adresse));
+$insert=$db->prepare(" INSERT INTO donateurs(nom,email,telephone,codepostal,type_donateurs,photo_user,password) VALUES (?,?,?,?,?,?,?)");
+$insert->execute(array($nom,$email,$telephone,$codepostal,$type_donateurs,$photo_user,$password));
 }
 ?>
 
@@ -30,7 +39,7 @@ $insert->execute(array($nom,$codepostal,$password,$email,$type_donateurs,$adress
 </head>
 <body>
 	<!--footer -->
-	<?php include "../core/header_home.php" ;?>
+	
 
 	<div class="row">
 		<form class="col s12" method="POST" action="#">
@@ -44,10 +53,17 @@ $insert->execute(array($nom,$codepostal,$password,$email,$type_donateurs,$adress
 				</div>
 				
 				<div class="input-field col s6">
-					<input placeholder="Placeholder" id="adresse"  name ="adresse" type="text" class="validate">
-					<label for="adresse">Adresse</label>
+					<input placeholder="Placeholder" id="photo_user"  name ="photo_user" type="text" class="validate">
+					<label for="photo_user">photo_user</label>
 				</div>
+
 				<div class="input-field col s6">
+					<input id="telephone" type="text"  name ="telephone" class="validate">
+					<label for="telephone">Telephone</label>
+				</div>
+
+
+				 <div class="input-field col s6">
 					<input id="codepostal" type="text"  name ="codepostal" class="validate">
 					<label for="codepostal">Code Postal</label>
 				</div>
@@ -67,7 +83,7 @@ $insert->execute(array($nom,$codepostal,$password,$email,$type_donateurs,$adress
 
 				<div class="input-field col s12">
 					<input id="type_donateurs" name ="type_donateurs" type="text" class="validate">
-					<label for="type_donateurst">Type Association</label>
+					<label for="type_donateurst">Type Donateur</label>
 				</div>
 	
 				

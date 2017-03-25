@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "../core/connexionBd.php";
-include "../core/utile.php";
+
 $connexion = connexionBd();
 $bd= BD;
 if(isset($_GET['pub'])) {
