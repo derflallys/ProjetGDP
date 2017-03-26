@@ -25,6 +25,16 @@ $(document).ready(function(){
          }
         });
     });
+     $('#donateur').fadeOut();
+     $('#fournisseur').fadeOut();
+    $('#bt_donateur').click(function(e){
+         $('#fournisseur').fadeOut();
+        $('#donateur').fadeIn();
+        
+    });
 
-    $()
+    $('#bt_fournisseur').click(function(e){
+        $('#donateur').fadeOut();
+        $('#fournisseur').fadeIn();
+    });
 });
