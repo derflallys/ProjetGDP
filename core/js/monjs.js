@@ -8,15 +8,16 @@ $(document).ready(function(){
     $('.datepicker').pickadate({
 
     });
+
     $("a.btn-floating.red.val_note").click(function (e) {
         e.preventDefault();
-        console.log($(this).attr("value"));
+        //console.log($(this).attr("value"));
        $.get("insert_note.php",{insert:true,note:$(this).attr("value")},function (data) {
            console.log(data);
          if(data!='exist'){
              $('body').load(data);
-             var $toastContent = $('<span>Merci d\'avoir noter la publication</span>');
-             Materialize.toast($toastContent, 50000);
+             var $toastContent1 = $('<span>Merci d\'avoir noter la publication</span>');
+             Materialize.toast($toastContent1, 50000);
          }
          else
          {
@@ -47,5 +48,17 @@ $(document).ready(function(){
             stopPropagation: false // Stops event propagation
         }
     );
+
+    //Envoie mail et insert demande
+    $('#demande').click(function (e) {
+        e.preventDefault();
+        $.get("envoiemail.php",{demande:true},function (data) {
+            console.log(data);
+            
+            $('body').load(data);
+            var $toastContent2 = $('<span>Votre demande a ete bien transmis</span>');
+            Materialize.toast($toastContent2, 5000);
+        });
+    })
 
 });

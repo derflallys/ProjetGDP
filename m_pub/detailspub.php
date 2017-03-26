@@ -116,7 +116,7 @@ else
                         <li class="collection-item dismissable left-align"><div><b >Note :</b><a href="#!" class="secondary-content"><b>'.$note.'/10</a></b></div></li>
                     </ul> '
                 ;?>
-                <a href="envoiemail.php"   class="waves-effect waves-light btn-large"><i class="material-icons left">done</i>Je Demande</a>
+                <a href="#"  id="demande" class="waves-effect waves-light btn-large"><i class="material-icons left">done</i>Je Demande</a>
                 <div class="fixed-action-btn">
                     <a class="btn-floating btn-large red">
                         <i class="large material-icons">plus_one</i>
