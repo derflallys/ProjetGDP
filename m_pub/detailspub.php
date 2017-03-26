@@ -117,6 +117,7 @@ else
                     </ul> '
                 ;?>
                 <a href="#"  id="demande" class="waves-effect waves-light btn-large"><i class="material-icons left">done</i>Je Demande</a>
+                <a href="affichePublication.php" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">arrow_back</i></a>
                 <div class="fixed-action-btn">
                     <a class="btn-floating btn-large red">
                         <i class="large material-icons">plus_one</i>

@@ -1,8 +1,3 @@
-<?php
-include "../core/header_home.php"
-//include 'authentification.php';
-
-?>
 
 <?php 
 session_start();
@@ -56,7 +51,7 @@ else{
 </head>
 <body>
 	<!--footer -->
-	<?php include "../core/header_home.php" ;?>
+	<?php include "../core/header_ins.php" ;?>
 
 	<div class="row">
 		<form class="col s12" method="POST" action="#">
@@ -114,12 +109,13 @@ else{
 			</div>
 			<div class="col s2"></div>
 		</form>
-</div>        
-
-
+</div>
+    <!--Modal Connexion -->
+    <?php include "../core/mes_modals.php";?>
         
 
 <?php include "../core/footer.php" ;?>
+
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="../core/js/materialize.js"></script>

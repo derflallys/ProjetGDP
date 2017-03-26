@@ -1,11 +1,4 @@
-
 <?php
-include "../core/header_home.php"
-//include 'authentification.php';
-
-?>
-
-<?php 
 session_start();
 require_once("../core/connexionBd.php");
 include "../core/utile.php";
@@ -52,7 +45,10 @@ if(isset($_POST['action'])){
 </head>
 <body>
 	<!--footer -->
-	
+
+    <?php
+    include "../core/header_ins.php"
+    ?>
 
 	<div class="row">
 		<form class="col s12" method="POST" action="#">
@@ -107,11 +103,9 @@ if(isset($_POST['action'])){
 			</div>
 			<div class="col s2"></div>
 		</form>
-</div>        
-
-
-        
-
+</div>
+    <!--Modal Connexion -->
+    <?php include "../core/mes_modals.php";?>
 <?php include "../core/footer.php" ;?>
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
