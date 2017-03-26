@@ -8,12 +8,15 @@ function tronquer_texte($texte,$longueur_max =100)
 	}
 	return $texte;
 }
-function MaildansBase($mail)
+function MaildansBase($mail,$table)
 {
 	$connexion = connexionBd();
 	$bd=BD;
-	$sql="SELECT email from $bd.donateurs ";
+	$sql="SELECT email from $bd.$table ";
 	$resultat=$connexion->query($sql);
+
+	
+
 	$res = $resultat->fetchAll(PDO::FETCH_ASSOC);
 		//print_r($res);
 	 $verif=true;
@@ -24,6 +27,7 @@ function MaildansBase($mail)
 			//print_r("false");
 			$verif =false ;
 		}
+
 	}
 
 	return $verif;

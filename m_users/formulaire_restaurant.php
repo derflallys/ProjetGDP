@@ -1,17 +1,21 @@
-//<?php
-//include("../header.php");
+<?php
+include "../core/header_home.php"
 //include 'authentification.php';
 
 ?>
+
 <?php 
 session_start();
-require_once("Connect.php");
+require_once("../core/connexionBd.php");
+include "../core/utile.php";
+$connexion = connexionBd();
+$bd=BD;
 if(isset($_POST['action'])){
 
 
 
 $nom_restaurant=$_POST['nom_restaurant'];
-$adresse_restaurant=$_POST['adresse_restaurant'];
+//$adresse_restaurant=$_POST['adresse_restaurant'];
 $codepostal=$_POST['codepostal'];
 $password=$_POST['password'];
 $email=$_POST['email'];
@@ -20,8 +24,19 @@ $tel=$_POST['tel'];
 $contrat=$_POST['contrat'];
 
 
+
+
+$veriff=MaildansBase($email,"fournisseurs");
+$mdp=hash('sha256',$_POST['password']);
+
+if ($veriff) {
+
 $insert=$db->prepare(" INSERT INTO fournisseurs(nom_restaurant, adresse_restaurant, codepostal, email, contrat,type_restaurant,password,tel) VALUES (?,?,?,?,?,?,?,?)");
 $insert->execute(array($nom_restaurant,$adresse_restaurant,$codepostal,$email,$contrat,$type_restaurant,$password,$tel));
+}
+else{
+	echo "<h1>Ce Mot de Passe Existe Deja </h1>";
+}
 }
 ?>
 

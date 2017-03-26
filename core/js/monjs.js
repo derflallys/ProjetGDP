@@ -25,7 +25,17 @@ $(document).ready(function(){
          }
         });
     });
+     $('#donateur').fadeOut();
+     $('#fournisseur').fadeOut();
+    $('#bt_donateur').click(function(e){
+         $('#fournisseur').fadeOut();
+        $('#donateur').fadeIn();
 
+    });
+    $('#bt_fournisseur').click(function(e){
+        $('#donateur').fadeOut();
+        $('#fournisseur').fadeIn();
+    });
     $('.dropdown-button').dropdown({
             inDuration: 300,
             outDuration: 225,
@@ -37,4 +47,5 @@ $(document).ready(function(){
             stopPropagation: false // Stops event propagation
         }
     );
+
 });
