@@ -7,19 +7,32 @@ include "../core/header_home.php"
 
 <?php 
 session_start();
-require_once("Connect.php");
+require_once("../core/connexionBd.php");
+include "../core/utile.php";
+$connexion = connexionBd();
+$bd=BD;
 if(isset($_POST['action'])){
-$nom=$_POST['nom'];
-//$adresse=$_POST['adresse'];
-$codepostal=$_POST['codepostal'];
-$password=$_POST['password'];
-$email=$_POST['email'];
-$type_donateurs=$_POST['type_donateurs'];
-$telephone=$_POST['telephone'];
-$photo_user=$_POST['photo_user'];
+	$nom=$_POST['nom'];
+	//$adresse=$_POST['adresse'];
+	$codepostal=$_POST['codepostal'];
+	
+	$email=$_POST['email'];
+	$type_donateurs=$_POST['type_donateurs'];
+	$telephone=$_POST['telephone'];
+	$photo_user=$_POST['photo_user'];
 
-$insert=$db->prepare(" INSERT INTO donateurs(nom,email,telephone,codepostal,type_donateurs,photo_user,password) VALUES (?,?,?,?,?,?,?)");
-$insert->execute(array($nom,$email,$telephone,$codepostal,$type_donateurs,$photo_user,$password));
+	$veriff=MaildansBase($email);
+	$mdp=hash('sha256',$_POST['password']);
+
+	if ($veriff) {
+		$insert=$connexion->prepare(" INSERT INTO $bd.donateurs(nom,email,telephone,codepostal,type_donateurs,photo_user,password) VALUES (?,?,?,?,?,?,?)");
+		$insert->execute(array($nom,$email,$telephone,$codepostal,$type_donateurs,$photo_user,$mdp));
+	}
+	else
+	{
+		//header('Location: creer_compte.php');
+		echo "<h1>Ce Mot de Passe Existe Deja </h1>";
+	}	
 }
 ?>
 

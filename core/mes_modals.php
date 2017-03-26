@@ -11,21 +11,21 @@ if(isset($_POST['contenu']))
     <div class="modal-content">
         <h4>Entrer votre Email et Mot de passe</h4>
         <div class="row">
-            <form class="col s12">
+            <form class="col s12" method="POST" action="m_users/authentification.php">
                 <div class="col s2"></div>
                 <div class="col s8">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="email" class="validate">
+                            <input id="email" type="email" name="email" class="validate">
                             <label for="email" data-error="wrong" data-success="right">Email</label>
                         </div>
                         <div class="input-field col s12">
-                            <input id="password" type="password" class="validate ">
+                            <input id="password" name="password" type="password" class="validate ">
                             <label for="password">Password</label>
                         </div>
                         <div class="input-field col s12">
                             <div class="col s6">
-                                <button class="btn waves-effect waves-light grey darken-2" type="submit" name="action">Submit
+                                <button class="btn waves-effect waves-light grey darken-2" type="submit" name="connect">Submit
                                     <i class="material-icons right">send</i>
                                 </button>
                             </div>
