@@ -26,7 +26,7 @@ if (isset($_POST['connect']))
 
             foreach ($res as $key => $value) {
 
-                $_SESSION['id'] = $value['id'];
+                $_SESSION['id_donateur'] = $value['id_donateu'];
                 $_SESSION['email'] = $value['email'];
                 $_SESSION['password'] = $value['password'];
                 
