@@ -42,6 +42,7 @@ if(isset($_GET['pub'])) {
 
     //definition des differents donnes pour l'envoie de mail et autres
     $_SESSION['id_pub']=$_GET['pub'];
+    $_SESSION['id_donateur']=$res_dona['id_donateu'];
     $_SESSION['mail_resto']=$resresto['email'];
     $_SESSION['mail_donateur']=$res_dona['email'];
     $_SESSION['nom_donateur']=$res_dona['nom'];
@@ -115,7 +116,7 @@ else
                         <li class="collection-item dismissable left-align"><div><b >Note :</b><a href="#!" class="secondary-content"><b>'.$note.'/10</a></b></div></li>
                     </ul> '
                 ;?>
-                <a href="#" id="ajout_contenu" data-target="modal3" class="waves-effect waves-light btn-large"><i class="material-icons left">done</i>Je Demande</a>
+                <a href="#"  id="demande" class="waves-effect waves-light btn-large"><i class="material-icons left">done</i>Je Demande</a>
                 <div class="fixed-action-btn">
                     <a class="btn-floating btn-large red">
                         <i class="large material-icons">plus_one</i>

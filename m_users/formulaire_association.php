@@ -21,7 +21,7 @@ if(isset($_POST['action'])){
 	$telephone=$_POST['telephone'];
 	$photo_user=$_POST['photo_user'];
 
-	$veriff=MaildansBase($email);
+	$veriff=MaildansBase($email,"donateurs");
 	$mdp=hash('sha256',$_POST['password']);
 
 	if ($veriff) {

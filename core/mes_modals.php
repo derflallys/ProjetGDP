@@ -9,43 +9,87 @@ if(isset($_POST['contenu']))
 ?>
 <div id="modal1" class="modal">
     <div class="modal-content">
-        <h4>Entrer votre Email et Mot de passe</h4>
+        
         <div class="row">
-            <form class="col s12" method="POST" action="m_users/authentification.php">
-                <div class="col s2"></div>
-                <div class="col s8">
+            
+                <div class="col s1"></div>
+                <div class="col s10">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="email" name="email" class="validate">
-                            <label for="email" data-error="wrong" data-success="right">Email</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <input id="password" name="password" type="password" class="validate ">
-                            <label for="password">Password</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <div class="col s6">
-                                <button class="btn waves-effect waves-light grey darken-2" type="submit" name="connect">Submit
-                                    <i class="material-icons right">send</i>
-                                </button>
+                            <h4 class="align-text"> Vous etes ...</h4>
+                                <div class="col s6">
+                                    <button class="btn waves-effect waves-light grey darken-2" id="bt_donateur" >Donateurs
+                                    
+                                    </button>
+                                </div>
+                                <div class="col s6">
+                                    <button class="btn waves-effect waves-light grey darken-2" id="bt_fournisseur" >Fournisseurs
+                                    
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col s6">
-                                <button class="btn waves-effect waves-light grey darken-2" type="reset" name="action">Reset
-                                    <i class="material-icons">eject</i>
-                                </button>
+                        <div id="donateur" hidden="true">
+                        <h4 class="align-text">Entrer votre Email et Mot de passe</h4>
+                            <form class="col s12" method="POST" action="m_users/authentification.php">    
+                            <div class="input-field col s12">
+                                <input id="email" type="email" name="email" class="validate">
+                                <label for="email" data-error="wrong" data-success="right">Email</label>
                             </div>
+                            <div class="input-field col s12">
+                                <input id="password" name="password" type="password" class="validate ">
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <div class="col s6">
+                                    <button class="btn waves-effect waves-light grey darken-2" type="submit" name="connect">Submit
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                                <div class="col s6">
+                                    <button class="btn waves-effect waves-light grey darken-2" type="reset" name="action">Reset
+                                        <i class="material-icons">eject</i>
+                                    </button>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                        <div id="fournisseur" hidden="true">
+                        <h4 class="align-text">Entrer votre Email et Mot de passe</h4>
+                            <form class="col s12" method="POST" action="m_users/authentification_restaurant.php">    
+                            <div class="input-field col s12">
+                                <input id="email" type="email" name="email" class="validate">
+                                <label for="email" data-error="wrong" data-success="right">Email</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="password" name="password" type="password" class="validate ">
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <div class="col s6">
+                                    <button class="btn waves-effect waves-light grey darken-2" type="submit" name="connect">Submit
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                                <div class="col s6">
+                                    <button class="btn waves-effect waves-light grey darken-2" type="reset" name="action">Reset
+                                        <i class="material-icons">eject</i>
+                                    </button>
+                                </div>
+                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="col s2"></div>
-            </form>
+                <div class="col s1"></div>
+            
         </div>
     </div>
 </div>
     <!-- fin Modal Structure -->
+    <!-- Modal INscription -->
     <div id="modal2" class="modal">
         <div class="modal-content">
-            <h4> Vous etes ...</h4>
+            <h4 class="align-text"> Vous etes ...</h4>
             <div class="row">
                 <form class="col s12">
                     <div class="col s2"></div>
@@ -57,6 +101,31 @@ if(isset($_POST['contenu']))
                                 </div>
                                 <div class="col s6">
                                     <a href="m_users/formulaire_restaurant.php" class="waves-effect waves-light btn-large">Fournisseurs</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s2"></div>
+
+            </div>
+        </div>
+    </div>
+
+     <!-- Modal Connexion -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <h4> Vous etes ...</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="col s2"></div>
+                    <div class="col s8">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <div class="col s6">
+                                    <a href="#" data-target="modal4" class="waves-effect waves-light btn-large">Donateurs</a>
+                                </div>
+                                <div class="col s6">
+                                    <a href="#" class="waves-effect waves-light btn-large">Fournisseurs</a>
                                 </div>
                             </div>
                         </div>

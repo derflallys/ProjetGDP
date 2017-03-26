@@ -165,7 +165,7 @@ ALTER TABLE `publication`
 --
 -- Index pour la table `vue_publication`
 --
-ALTER TABLE `vue_publication`
+ALTER TABLE demande_pub
   ADD PRIMARY KEY (`id_publication`,`id_donateur`),
   ADD KEY `FK__donateurs` (`id_donateur`);
 
@@ -209,7 +209,7 @@ ALTER TABLE `publication`
 --
 -- Contraintes pour la table `vue_publication`
 --
-ALTER TABLE `vue_publication`
+ALTER TABLE demande_pub
   ADD CONSTRAINT `FK__donateurs` FOREIGN KEY (`id_donateur`) REFERENCES `donateurs` (`id_donateu`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK__publication` FOREIGN KEY (`id_publication`) REFERENCES `publication` (`id_publication`) ON DELETE CASCADE ON UPDATE CASCADE;
 

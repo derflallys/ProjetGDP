@@ -13,10 +13,10 @@ $bd=BD;
 
 if (isset($_POST['connect'])) 
 {
-	$sql="SELECT * from $bd.donateurs where email=:email AND password=:password";
+	$sql="SELECT * from $bd.fournisseurs where email=:email AND password=:password";
 	$resultat=$connexion->prepare($sql);
 	$mdp=hash('sha256',$_POST['password']);
-	echo $mdp;
+	//echo $mdp;
 
 	 $resultat->execute(array('email'=>$_POST['email'] ,'password'=>$mdp ));
 	$res = $resultat->fetchAll(PDO::FETCH_ASSOC);
@@ -36,7 +36,7 @@ if (isset($_POST['connect']))
 		}
 		else {
 
-			$_SESSION['donateurs']['error']="Login ou Mot de passe Incorrect";
+			$_SESSION['fournisseurs']['error']="Login ou Mot de passe Incorrect";
 			echo "mauvais login";
 		}
 }
@@ -44,5 +44,8 @@ else
 {
 	echo "mauvais";
 }
-
 ?>
+
+
+
+

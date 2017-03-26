@@ -3,7 +3,7 @@
             <div class="nav-wrapper container">
                 <a id="logo-container" href="../index.php" class="brand-logo"><img class="circle responsive-img" src="../core/img/logo.jpg" alt="Logo"></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a class="dropdown-button" data-activates="moncompte" href="#"><i class="material-icons left">face</i>Mon Compte</a></li>
+                    <li><a href="#" class="dropdown-button" data-activates="moncompte"><i class="material-icons left">face</i>Mon Compte</a></li>
                     <li><a href="#"><i class="material-icons left">exit_to_app</i>Deconnexion</a></li>
                 </ul>
                 <ul id="moncompte" class="dropdown-content">
@@ -20,4 +20,3 @@
             </div>
     </nav>
 </div>
-
