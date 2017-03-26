@@ -1,5 +1,4 @@
-//<?php
-//include("../header.php");
+<?php
 //include 'authentification.php';
 
 ?>
@@ -40,10 +39,9 @@ $insert->execute(array($nom_restaurant,$adresse_restaurant,$codepostal,$email,$c
 
 </head>
 <body>
-	<!--footer -->
-	<?php include "../core/header_home.php" ;?>
-
-	<div class="row">
+	<!--header -->
+    <?php include "../core/header_ins.php";?>
+    <div class="row">
 		<form class="col s12" method="POST" action="#">
 
 		 <div class="col s2"></div>
@@ -70,7 +68,7 @@ $insert->execute(array($nom_restaurant,$adresse_restaurant,$codepostal,$email,$c
 			   
 				<div class="input-field col s12">
 					<input id="password" type="password"  name="password" class="validate">
-					<label for="password">Password</label>
+					<label for="password">Mot de passe</label>
 				</div>
 			
 			

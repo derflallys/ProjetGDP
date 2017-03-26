@@ -6,7 +6,8 @@
 -- Généré le :  Jeu 23 Mars 2017 à 17:18
 -- Version du serveur :  10.1.13-MariaDB
 -- Version de PHP :  7.0.8
-
+CREATE DATABASE IF NOT EXISTS `projetgdp` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `projetgdp`;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
