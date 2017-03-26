@@ -11,7 +11,10 @@
                     <li><a href="#!">Mes Publications</a></li>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
-                    <li><a href="#">Navbar Link</a></li>
+
+                        <li><a href="#"><i class="material-icons left">face</i>Mon Compte</a></li>
+                        <li><a href="#"><i class="material-icons left">exit_to_app</i>Deconnexion</a></li>
+
                 </ul>
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>

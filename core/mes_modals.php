@@ -1,3 +1,12 @@
+<?php
+if(isset($_POST['contenu']))
+{
+    $_SESSION['contenu']=$_POST['contenu'];
+    header('Location:envoiemail.php');
+}
+
+
+?>
 <div id="modal1" class="modal">
     <div class="modal-content">
         <h4>Entrer votre Email et Mot de passe</h4>
@@ -53,7 +62,35 @@
                         </div>
                     </div>
                     <div class="col s2"></div>
-                </form>
+
             </div>
         </div>
     </div>
+<!-- Modal Envoi MAil -->
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        <h4 align-text> Veillez Rediger le contenu du mail s'il vous plait</h4>
+        <div class="row">
+            <form class="col s12">
+                <div class="col s2"></div>
+                <div class="col s8">
+                    <div class="row">
+                        <form class="col s12" method="POST" action="#" >
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea id="textarea1" name="contenu" class="materialize-textarea"></textarea>
+                                    <label for="textarea1">Contenu Mail</label>
+                                </div>
+
+                                <button class="btn waves-effect waves-light grey darken-2" type="submit" >Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col s2"></div>
+            </form>
+        </div>
+    </div>
+</div>

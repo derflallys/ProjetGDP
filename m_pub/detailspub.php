@@ -4,26 +4,51 @@ include "../core/connexionBd.php";
 
 $connexion = connexionBd();
 $bd= BD;
+$_SESSION['id_donateur']=2;
 if(isset($_GET['pub'])) {
     $sql = "SELECT * FROM $bd.publication where id_publication=:id";
     $resultat_pub = $connexion->prepare($sql);
     $resultat_pub->execute(array('id' => $_GET['pub']));
     $res_pub = $resultat_pub->fetch(PDO::FETCH_ASSOC);
     //print_r($res);
+    //Type contrat
+
     //Fournissseurs
     $sql = "SELECT * FROM $bd.fournisseurs where id_restaurant=:id";
     $resultatresto=$connexion->prepare($sql);
     $resultatresto->execute(array('id'=>$res_pub["publicateur"]));
     $resresto = $resultatresto->fetch(PDO::FETCH_ASSOC);
+
+    //Donateurs
+    $sql = "SELECT * FROM $bd.donateurs where id_donateu=:id";
+    $resultatdona=$connexion->prepare($sql);
+    $resultatdona->execute(array('id'=>$_SESSION['id_donateur']));
+    $res_dona = $resultatdona->fetch(PDO::FETCH_ASSOC);
+    //print_r($res_dona);
+
+    if($resresto["contrat"])
+    {
+        $contrat="Avec Contrat";
+    }
+    else
+    {
+        $contrat="Sans Contrat";
+    }
     //Calcul de la note
     $sql = "SELECT AVG(note) as note FROM $bd.note_fournisseurs where id_fournisseurs=:id";
     $resultatnote=$connexion->prepare($sql);
     $resultatnote->execute(array('id'=>$res_pub["publicateur"]));
     $resnote = $resultatnote->fetch(PDO::FETCH_ASSOC);
 
+    //definition des differents donnes pour l'envoie de mail et autres
     $_SESSION['id_pub']=$_GET['pub'];
+    $_SESSION['mail_resto']=$resresto['email'];
+    $_SESSION['mail_donateur']=$res_dona['email'];
+    $_SESSION['nom_donateur']=$res_dona['nom'];
+    $_SESSION['nom_fourn']=$resresto['nom_restaurant'];
+    $_SESSION['titre_pub']=$res_pub['titre_publication'];
     $_SESSION['id_resto']=$res_pub["publicateur"];
-    $_SESSION['id_donateur']=2;
+
 
     if (!empty($resnote)) {
 
@@ -76,19 +101,21 @@ else
                 echo'
                     <ul class="collection col s12 hoverable ">
                         <li class="collection-header"><h4>Information Publication</h4></li>
-                        <li class="collection-item dismissable"><div><b class=" left-align">Date Publication :</b><a href="#!" class="secondary-content"> <b>'.$res_pub["date_publication"].'</a></b></div></li>
-                        <li class="collection-item dismissable"><div><b class="left-align">Quantite :</b><a href="#!" class="secondary-content"><b>'.$res_pub["quantite"].'</a></b></div></li>
-                        <li class="collection-item dismissable"><div><b class="left-align">Etat :</b><a href="#!" class="secondary-content"><b>'.strtoupper($res_pub["etat"]).'</a></b></div></li>
-                        <li class="collection-item dismissable"><div><b class="left-align">Duree de Validite :</b><a href="#!" class="secondary-content"><b>'.$res_pub["duree_validite"].'</a></b></div></li>
+                        <li class="collection-item dismissable left-align"><div><b >Date Publication :</b><a href="#!" class="secondary-content"> <b>'.$res_pub["date_publication"].'</a></b></div></li>
+                        <li class="collection-item dismissable left-align"><div><b >Quantite :</b><a href="#!" class="secondary-content"><b>'.$res_pub["quantite"].'</a></b></div></li>
+                        <li class="collection-item dismissable left-align"><div><b >Etat :</b><a href="#!" class="secondary-content"><b>'.strtoupper($res_pub["etat"]).'</a></b></div></li>
+                        <li class="collection-item dismissable left-align"><div><b >Duree de Validite :</b><a href="#!" class="secondary-content"><b>'.$res_pub["duree_validite"].'</a></b></div></li>
                     </ul> 
+                    
                     <ul class="collection col s12 hoverable ">
-                        <li class="collection-header"><h4>Information Restaurant</h4></li>
-                        <li class="collection-item dismissable"><div><b class=" left-align">Adresse :</b><a href="#!" class="secondary-content"> <b>'.$resresto["adresse_restaurant"].'</a></b></div></li>
-                        <li class="collection-item dismissable"><div><b class="left-align">Type de Collaboration :</b><a href="#!" class="secondary-content"><b>'.$resresto["contrat"].'</a></b></div></li>
-                        <li class="collection-item dismissable"><div><b class="left-align">Telephone :</b><a href="#!" class="secondary-content"><b>'.$resresto["tel"].'</a></b></div></li>
-                        <li class="collection-item dismissable"><div><b class="left-align">Note :</b><a href="#!" class="secondary-content"><b>'.$note.'/10</a></b></div></li>
+                        <li class="collection-header"><h4>Information Fournisseurs</h4></li>
+                        <li class="collection-item dismissable left-align"><div><b>Adresse :</b><a href="#!" class="secondary-content"> <b>'.$resresto["adresse_restaurant"].'</a></b></div></li>
+                        <li class="collection-item dismissable left-align"><div><b >Type de Collaboration :</b><a href="#!" class="secondary-content"><b>'.$contrat.'</a></b></div></li>
+                        <li class="collection-item dismissable left-align"><div><b >Telephone :</b><a href="#!" class="secondary-content"><b>'.$resresto["tel"].'</a></b></div></li>
+                        <li class="collection-item dismissable left-align"><div><b >Note :</b><a href="#!" class="secondary-content"><b>'.$note.'/10</a></b></div></li>
                     </ul> '
                 ;?>
+                <a href="#" id="ajout_contenu" data-target="modal3" class="waves-effect waves-light btn-large"><i class="material-icons left">done</i>Je Demande</a>
                 <div class="fixed-action-btn">
                     <a class="btn-floating btn-large red">
                         <i class="large material-icons">plus_one</i>
@@ -114,6 +141,9 @@ else
 
 <!--footer -->
 <?php include "../core/footer.php" ;?>
+
+<!--Modal  -->
+<?php include "../core/mes_modals.php";?>
 </body>
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
