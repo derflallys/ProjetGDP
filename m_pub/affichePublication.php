@@ -63,9 +63,9 @@ foreach ($res as $key => $value) {
                 </div>
                 <div class="card-action grey lighten-1">
                     <form method="get">
-                        <a class="btn-floating  waves-effect waves-light red right"><i class="material-icons ">done</i>Faire la demande</a>
+                        <a class="waves-effect waves-light left">En Savoir Plus</a> 
                   
-                        <a href=detailspub.php?pub='.$value["id_publication"].' class="btn-floating  waves-effect waves-light red left"><i class="material-icons ">add</i>Voir plus d\'information</a>
+                        <a href=detailspub.php?pub='.$value["id_publication"].' class="btn-floating  waves-effect waves-light red right"><i class="material-icons ">add</i>Voir plus d\'information</a>
                     </form>
                 </div>
             </div>

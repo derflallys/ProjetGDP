@@ -88,7 +88,7 @@ else
         <h3 class="col s12 center-align blue-grey-text"> Details de la publication </h3>
         <div class="row">
 
-            <div class="col s8 offset-s2 ">
+            <div class="col s8  offset-s2">
                 <?php echo '<h5 class="center-align blue-grey-text ">'.$res_pub["titre_publication"].'</h5>';
                  echo  '<img class="materialboxed hoverable  push-s2" width="650" src='.$res_pub["image_publication"].'>';
 
@@ -117,7 +117,9 @@ else
                     </ul> '
                 ;?>
                 <a href="#"  id="demande" class="waves-effect waves-light btn-large"><i class="material-icons left">done</i>Je Demande</a>
-                <a href="affichePublication.php" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">arrow_back</i></a>
+                <div class="col s2">
+                        <a href="affichePublication.php" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">arrow_back</i></a>
+                </div>
                 <div class="fixed-action-btn">
                     <a class="btn-floating btn-large red">
                         <i class="large material-icons">plus_one</i>
