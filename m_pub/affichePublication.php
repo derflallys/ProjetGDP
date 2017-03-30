@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../core/connexionBd.php";
 
 $connexion = connexionBd();
@@ -27,7 +28,17 @@ $resultatresto=$connexion->prepare($sql);
 </head>
 <body>
 <!--footer -->
-<?php include "../core/header.php" ;?>
+
+<?php 
+    if (strcmp($_SESSION['user'],'donateurs')==0) {
+       include "../core/header_donateurs.php";
+    }
+    if (strcmp($_SESSION['user'],'fournisseurs')==0) 
+    {
+        include "../core/header_fournisseurs.php";
+    }
+    
+     ?>
 <!--Affichage des publications -->
 <h1 class="center grey-text"> Les dernieres publications </h1>
 <div class="container">

@@ -56,49 +56,43 @@ if(isset($_POST['action'])){
 		 <div class="col s2"></div>
 		 <div class="col s8">
 			<div class="row">
-			<div class="input-field col s6">
-					<input placeholder="Placeholder" id="nom"  name ="nom" type="text" class="validate">
-					<label for="nom">Nom</label>
-				</div>
-				
-				<div class="input-field col s6">
-					<input placeholder="Placeholder" id="photo_user"  name ="photo_user" type="text" class="validate">
-					<label for="photo_user">photo_user</label>
-				</div>
+					<div class="input-field col s12">
+							<input placeholder="Nom de votre Association" id="nom"  name ="nom" type="text" class="validate">
+							<label for="nom">Nom</label>
+						</div>
 
-				<div class="input-field col s6">
-					<input id="telephone" type="text"  name ="telephone" class="validate">
-					<label for="telephone">Telephone</label>
-				</div>
+						<div class="input-field col s6">
+							<input id="telephone" type="text"  name ="telephone" class="validate">
+							<label for="telephone">Telephone</label>
+						</div>
 
 
-				 <div class="input-field col s6">
-					<input id="codepostal" type="text"  name ="codepostal" class="validate">
-					<label for="codepostal">Code Postal</label>
-				</div>
-			
-				<div class="input-field col s12">
-					<input id="password" type="password"  name="password" class="validate">
-					<label for="password">Password</label>
-				</div>
-			
-			
-				<div class="input-field col s12">
-					<input id="email" type="email"  name="email" class="validate">
-					<label for="email">Email</label>
-				</div>
-			
-				
+						 <div class="input-field col s6">
+							<input id="codepostal" type="text"  name ="codepostal" class="validate">
+							<label for="codepostal">Code Postal</label>
+						</div>
+					
+						
+					
+						<div class="input-field col s12">
+							<input id="email" type="email"  name="email" class="validate">
+							<label for="email">Email</label>
+						</div>
+					
+						<div class="input-field col s12">
+							<input id="password" type="password"  name="password" class="validate">
+							<label for="password">Password</label>
+						</div>
 
-				<div class="input-field col s12">
-					<input id="type_donateurs" name ="type_donateurs" type="text" class="validate">
-					<label for="type_donateurst">Type Donateur</label>
-				</div>
-	
-				
-	<button class="btn waves-effect waves-light" type="submit" name="action">Submit
-    <i class="material-icons right">send</i>
-  </button>
+						<div class="input-field col s12">
+							<input id="type_donateurs" name ="type_donateurs" type="text" class="validate">
+							<label for="type_donateurst">Type Donateur</label>
+						</div>
+			
+						
+						<button class="btn waves-effect waves-light" type="submit" name="action">Submit
+					    <i class="material-icons right">send</i>
+					  </button>
 			</div>
 			</div>
 			<div class="col s2"></div>

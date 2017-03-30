@@ -29,6 +29,7 @@ if (isset($_POST['connect']))
                 $_SESSION['id_donateur'] = $value['id_donateu'];
                 $_SESSION['email'] = $value['email'];
                 $_SESSION['password'] = $value['password'];
+                $_SESSION['user'] = 'donateurs';
                 
             }
             echo "bon";

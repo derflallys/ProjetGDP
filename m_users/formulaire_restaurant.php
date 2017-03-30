@@ -5,17 +5,17 @@ require_once("../core/connexionBd.php");
 include "../core/utile.php";
 $connexion = connexionBd();
 $bd=BD;
+
+
 if(isset($_POST['action'])){
 
-
-
 $nom_restaurant=$_POST['nom_restaurant'];
-//$adresse_restaurant=$_POST['adresse_restaurant'];
+$adresse_restaurant=$_POST['adresse_restaurant'];
 $codepostal=$_POST['codepostal'];
 $password=$_POST['password'];
 $email=$_POST['email'];
 $type_restaurant=$_POST['type_restaurant'];
-$tel=$_POST['tel'];
+//$tel=$_POST['tel'];
 $contrat=$_POST['contrat'];
 
 
@@ -26,12 +26,13 @@ $mdp=hash('sha256',$_POST['password']);
 
 if ($veriff) {
 
-$insert=$db->prepare(" INSERT INTO fournisseurs(nom_restaurant, adresse_restaurant, codepostal, email, contrat,type_restaurant,password,tel) VALUES (?,?,?,?,?,?,?,?)");
-$insert->execute(array($nom_restaurant,$adresse_restaurant,$codepostal,$email,$contrat,$type_restaurant,$password,$tel));
+$insert=$connexion->prepare(" INSERT INTO $bd.fournisseurs(nom_restaurant, adresse_restaurant, codepostal, email, contrat,type_restaurant,password) VALUES (?,?,?,?,?,?,?)");
+$insert->execute(array($nom_restaurant,$adresse_restaurant,$codepostal,$email,$contrat,$type_restaurant,$password));
 }
 else{
-	echo "<h1>Ce Mot de Passe Existe Deja </h1>";
-}
+	$_SESSION['erreur_ins']="Cet email appartient deja à quelqu'un !";
+	//echo "<h1>Ce Mot de Passe Existe Deja </h1>";
+	}
 }
 ?>
 
@@ -51,7 +52,15 @@ else{
 </head>
 <body>
 	<!--footer -->
-	<?php include "../core/header_ins.php" ;?>
+	<?php include "../core/header_ins.php" ;
+		echo '<h1>'; 
+		if(isset($_SESSION['erreur_ins']))
+			{
+				echo $_SESSION['erreur_ins'];
+				 unset($_SESSION['erreur_ins']);
+			} 
+		echo '</h1>';
+	?>
 
 	<div class="row">
 		<form class="col s12" method="POST" action="#">
@@ -72,11 +81,7 @@ else{
 					<input id="codepostal" type="text"  name ="codepostal" class="validate">
 					<label for="codepostal">Code Postal</label>
 				</div>
-				<div class="input-field col s6">
-					<input id="tel" type="text"  name ="tel" class="validate">
-					<label for="tel">Telephone</label>
-				</div>
-			
+				
 			   
 				<div class="input-field col s12">
 					<input id="password" type="password"  name="password" class="validate">

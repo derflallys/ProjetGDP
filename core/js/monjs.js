@@ -59,6 +59,12 @@ $(document).ready(function(){
             var $toastContent2 = $('<span>Votre demande a ete bien transmis</span>');
             Materialize.toast($toastContent2, 5000);
         });
-    })
+    });
+
+    $("#modifInfo").fadeOut();
+    $('#modif').click(function(e){
+        $("#info").fadeOut();
+        $("#modifInfo").fadeIn();
+    });
 
 });

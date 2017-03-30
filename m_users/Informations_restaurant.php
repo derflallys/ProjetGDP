@@ -8,13 +8,13 @@ $bd= BD;
 
 
 //Donateurs
-    $sql = "SELECT * FROM $bd.donateurs where id_donateu=:id";
+    $sql = "SELECT * FROM $bd.fournisseurs where id_restaurant=:id";
     $resultatdona=$connexion->prepare($sql);
-    $resultatdona->execute(array('id'=>$_SESSION['id_donateur']));
+    $resultatdona->execute(array('id'=>$_SESSION['id']));
     $res_dona = $resultatdona->fetch(PDO::FETCH_ASSOC);
     //print_r($res_dona);
     $_SESSION['password']=$res_dona["password"];
-    $_SESSION['id_donateur']=$res_dona["id_donateu"];
+    $_SESSION['id_restaurant']=$res_dona["id_restaurant"];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -31,7 +31,7 @@ $bd= BD;
 
 </head>
 <body>
-<?php include "../core/header_donateurs.php" ;?>
+<?php include "../core/header_fournisseurs.php" ;?>
 <?php
 
 
@@ -39,18 +39,18 @@ $bd= BD;
  
 
  				<ul class="collection col s8 offset-2 hoverable " id="info">
-                        <li class="collection-header"><h4>Information Donateurs</h4></li>
+                        <li class="collection-header"><h4>Information Restaurant</h4></li>
 
-                        <li class="collection-item dismissable left-align"><div><b >Nom :</b><a href="#!" class="secondary-content"> <b>'.$res_dona["nom"].'</a></b></div></li>
+                        <li class="collection-item dismissable left-align"><div><b >Nom :</b><a href="#!" class="secondary-content"> <b>'.$res_dona["nom_restaurant"].'</a></b></div></li>
 
                         <li class="collection-item dismissable left-align"><div><b >Email :</b><a href="#!" class="secondary-content"><b>'.$res_dona["email"].'</a></b></div></li>
 
-						<li class="collection-item dismissable left-align"><div><b >Telephone:</b><a href="#!" class="secondary-content"><b>'.$res_dona["telephone"].'</a></b></div></li>
+						<li class="collection-item dismissable left-align"><div><b >Adresse:</b><a href="#!" class="secondary-content"><b>'.$res_dona["adresse_restaurant"].'</a></b></div></li>
 						                       
                         <li class="collection-item dismissable left-align"><div><b >CodePostal:</b><a href="#!" class="secondary-content"><b>'.$res_dona["codepostal"].'</a></b></div></li>
                        
 
-                        <li class="collection-item dismissable left-align"><div><b >Type Donateurs:</b><a href="#!" class="secondary-content"><b>'.$res_dona["type_donateurs"].'</a></b></div></li>
+                        <li class="collection-item dismissable left-align"><div><b >Type Restaurant:</b><a href="#!" class="secondary-content"><b>'.$res_dona["type_restaurant"].'</a></b></div></li>
 						
 						                       
                         <center>	<button class="btn waves-effect waves-light" id="modif" >Modifier mes Informations
@@ -65,15 +65,15 @@ $bd= BD;
  
  ?>	
  					<div class="row" id="modifInfo">
- 					<form action="modification.php" method="POST">
+ 					<form action="modification_restaurant.php" method="POST">
 						<div class="input-field col s12">
-					<?php echo 	'<input placeholder="Nom de votre Association" id="nom"  name ="nom" type="text" value='.$res_dona["nom"].' class="validate"> x
-								<label for="nom">Nom</label>
+					<?php echo 	'<input placeholder="Nom de votre Restaurant" id="nom"  name ="nom" type="text" value='.$res_dona["nom_restaurant"].' class="validate"> 
+								<label for="nom">Nom Restaurant</label>
 							</div>
 
 							<div class="input-field col s6">
-								<input id="telephone" type="text"  name ="telephone" class="validate" value='.$res_dona["telephone"].'>
-								<label for="telephone">Telephone</label>
+								<input id="telephone" type="text"  name ="telephone" class="validate" value='.$res_dona["adresse_restaurant"].'>
+								<label for="telephone">Adresse</label>
 							</div>
 
 
@@ -94,9 +94,8 @@ $bd= BD;
 								<label for="password">Password</label>
 							</div>
 
-							<div class="input-field col s12">
-								<input id="type_donateurs" name ="type_donateurs" type="text" class="validate" value='.$res_dona["type_donateurs"].'>
-								<label for="type_donateurst">Type Donateur</label>
+							<div class="input-field col s12"><input id="tyoe_restaurant"  restaurant" type="text" class="validate" value='.$res_dona["type_restaurant"].'>
+								<label for="type_restaurant">Type Restaurant</label>
 							</div>
 				
 							'?>
