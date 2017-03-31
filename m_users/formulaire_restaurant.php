@@ -66,6 +66,7 @@ else{
 	 <div class="col s8 offset-s2">
              <form class="col s12" method="POST" action="#">
 			<div class="row">
+                <h4 class="center">Inscription Fournisseurs</h4>
 				<div class="input-field col s12">
 					<input placeholder="Nom Fournisseur" id="nom_restaurant"  name ="nom_restaurant" type="text" class="validate" required>
 					<label for="nom">Nom</label>

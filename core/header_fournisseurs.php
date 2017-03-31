@@ -15,6 +15,7 @@
                 <ul id="moncompte" class="dropdown-content">
                     <li><a href="../m_users/Informations_restaurant.php">Mes Informations</a></li>
                     <li><a href="../m_pub/mesdemandes.php">Demande Recues</a></li>
+                    <li><a href="../m_pub/mespub_fournisseurs.php">Mes Publications</a></li>
                 </ul>
 
                 </form>

@@ -56,6 +56,7 @@ if(isset($_POST['action'])){
 		 <div class="col s2"></div>
 		 <div class="col s8">
 			<div class="row">
+                    <h4 class="center">Inscription Association Sociale </h4>
 					<div class="input-field col s12">
 							<input placeholder="Nom de votre Association" id="nom"  name ="nom" type="text" class="validate">
 							<label for="nom">Nom</label>
