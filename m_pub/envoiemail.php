@@ -9,15 +9,15 @@ if(isset($_GET['demande'])) {
     $subject = 'Demande à propos de la publication ' . $_SESSION['titre_pub'];
     $message = '
     Bonjour ' . $_SESSION['nom_fourn'] . ', 
-    Je suis interesse par le produit que vous donnez à savoir' . $_SESSION['titre_pub'] . '
-    . A ce sujet j\'aurai besoin d\'informations supplementaires . 
+    Je suis interesse par le produit que vous donnez à savoir ' . $_SESSION['titre_pub'] . '.
+    A ce sujet j\'aurai besoin d\'informations supplementaires . 
     Merci d\'avance de vos reponses et vous prie de croire,Madame,Monsieur, en l\'assurance de mes salutions 
     distinguées.
-    Cordialement 
+    Cordialement .
     ' . $_SESSION['nom_donateur'] . '
     Email : ' . $_SESSION['mail_donateur'];
 
-    $headers = 'From: ' . $_SESSION['mail_donateur'] . "\r\n";
+    $headers = 'From:'.$_SESSION['mail_donateur'];
 
     mail($to, $subject, $message, $headers);
     if (!mail($to, $subject, $message, $headers)) {

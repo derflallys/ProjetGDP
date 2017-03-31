@@ -15,7 +15,7 @@
         $sql="INSERT INTO $bd.publication(contenu, titre_publication, image_publication, date_publication, quantite, etat, duree_validite, publicateur)
         VALUES (:contenu,:titre,:image,:date_pub,:quantite,:etat,:duree,:idpub)";
         $pub=$connexion->prepare($sql);
-        $pub->execute(array('contenu'=>$_POST['contenu'],'titre'=>$_POST['titre'],'image'=>"img/".$_FILES['image']['name'],'date_pub'=>date("Y-m-d H:i:s"),'quantite'=>$_POST['quantite'],'etat'=>$_POST['etat'],'duree'=>$_POST['duree'],'idpub'=>$_SERVER['id_restaurant']));
+        $pub->execute(array('contenu'=>$_POST['contenu'],'titre'=>$_POST['titre'],'image'=>"img/".$_FILES['image']['name'],'date_pub'=>date("Y-m-d H:i:s"),'quantite'=>$_POST['quantite'],'etat'=>$_POST['etat'],'duree'=>$_POST['duree'],'idpub'=>$_SESSION['id_four']));
         $target_dir = "img/";
         $target_file = $target_dir . basename($_FILES["image"]["name"]);
 
@@ -41,7 +41,7 @@
 </head>
 <body>
 <!--footer -->
-<?php include "../core/header.php" ;?>
+<?php include "../core/header_fournisseurs.php" ;?>
     <div class="container">
         <div class="row">
             <form class="col s12" action="#" method="post" enctype="multipart/form-data">

@@ -1,12 +1,3 @@
-<?php
-if(isset($_POST['contenu']))
-{
-    $_SESSION['contenu']=$_POST['contenu'];
-    header('Location:envoiemail.php');
-}
-
-
-?>
 <div id="modal1" class="modal">
     <div class="modal-content">
         
@@ -135,7 +126,7 @@ if(isset($_POST['contenu']))
             </div>
         </div>
     </div>
-<!-- Modal Envoi MAil -->
+<!-- Modal Envoi MAil
 <div id="modal3" class="modal">
     <div class="modal-content">
         <h4 align-text> Veillez Rediger le contenu du mail s'il vous plait</h4>
@@ -163,3 +154,4 @@ if(isset($_POST['contenu']))
         </div>
     </div>
 </div>
+-->

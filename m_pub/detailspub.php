@@ -4,25 +4,24 @@ include "../core/connexionBd.php";
 
 $connexion = connexionBd();
 $bd= BD;
-$_SESSION['id_donateur']=2;
 if(isset($_GET['pub'])) {
-    $sql = "SELECT * FROM $bd.publication where id_publication=:id";
+    $sql = "SELECT * FROM $bd.publication where id_publication=:id_pub";
     $resultat_pub = $connexion->prepare($sql);
-    $resultat_pub->execute(array('id' => $_GET['pub']));
+    $resultat_pub->execute(array('id_pub' => $_GET['pub']));
     $res_pub = $resultat_pub->fetch(PDO::FETCH_ASSOC);
     //print_r($res);
     //Type contrat
 
     //Fournissseurs
-    $sql = "SELECT * FROM $bd.fournisseurs where id_restaurant=:id";
+    $sql = "SELECT * FROM $bd.fournisseurs where id_restaurant=:id_resto";
     $resultatresto=$connexion->prepare($sql);
-    $resultatresto->execute(array('id'=>$res_pub["publicateur"]));
+    $resultatresto->execute(array('id_resto'=>$res_pub["publicateur"]));
     $resresto = $resultatresto->fetch(PDO::FETCH_ASSOC);
 
     //Donateurs
-    $sql = "SELECT * FROM $bd.donateurs where id_donateu=:id";
+    $sql = "SELECT * FROM $bd.donateurs where id_donateu=:id_dona";
     $resultatdona=$connexion->prepare($sql);
-    $resultatdona->execute(array('id'=>$_SESSION['id_donateur']));
+    $resultatdona->execute(array('id_dona'=>$_SESSION['id_donateur']));
     $res_dona = $resultatdona->fetch(PDO::FETCH_ASSOC);
     //print_r($res_dona);
 
@@ -42,7 +41,7 @@ if(isset($_GET['pub'])) {
 
     //definition des differents donnes pour l'envoie de mail et autres
     $_SESSION['id_pub']=$_GET['pub'];
-    $_SESSION['id_donateur']=$res_dona['id_donateu'];
+   
     $_SESSION['mail_resto']=$resresto['email'];
     $_SESSION['mail_donateur']=$res_dona['email'];
     $_SESSION['nom_donateur']=$res_dona['nom'];
@@ -50,6 +49,7 @@ if(isset($_GET['pub'])) {
     $_SESSION['titre_pub']=$res_pub['titre_publication'];
     $_SESSION['id_resto']=$res_pub["publicateur"];
 
+   
 
     if (!empty($resnote)) {
 
@@ -81,7 +81,7 @@ else
 </head>
 <body>
 <!--header -->
-<?php include "../core/header.php" ;?>
+<?php include "../core/header_donateurs.php" ;?>
 
 
     <div class="container center">

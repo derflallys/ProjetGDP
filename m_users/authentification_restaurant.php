@@ -26,13 +26,14 @@ if (isset($_POST['connect']))
 
             foreach ($res as $key => $value) {
 
-                $_SESSION['id'] = $value['id_restaurant'];
+                $_SESSION['id_four'] = $value['id_restaurant'];
+                $_SESSION['id_restaurant'] = $value['id_restaurant'];
                 $_SESSION['email'] = $value['email'];
                 $_SESSION['password'] = $value['password'];
                 $_SESSION['user'] = 'fournisseurs';
             }
             echo "bon";
-            header('Location:../m_pub/affichePublication.php');
+            header('Location:../m_pub/mesdemandes.php');
 		}
 		else {
 

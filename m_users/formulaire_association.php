@@ -12,14 +12,14 @@ if(isset($_POST['action'])){
 	$email=$_POST['email'];
 	$type_donateurs=$_POST['type_donateurs'];
 	$telephone=$_POST['telephone'];
-	$photo_user=$_POST['photo_user'];
 
+    $adresse=$_POST['adresse'];
 	$veriff=MaildansBase($email,"donateurs");
 	$mdp=hash('sha256',$_POST['password']);
 
 	if ($veriff) {
-		$insert=$connexion->prepare(" INSERT INTO $bd.donateurs(nom,email,telephone,codepostal,type_donateurs,photo_user,password) VALUES (?,?,?,?,?,?,?)");
-		$insert->execute(array($nom,$email,$telephone,$codepostal,$type_donateurs,$photo_user,$mdp));
+		$insert=$connexion->prepare(" INSERT INTO $bd.donateurs(nom,email,telephone,codepostal,adresse,type_donateurs,password) VALUES (?,?,?,?,?,?,?)");
+		$insert->execute(array($nom,$email,$telephone,$codepostal,$adresse,$type_donateurs,$mdp));
 	}
 	else
 	{
@@ -71,7 +71,10 @@ if(isset($_POST['action'])){
 							<input id="codepostal" type="text"  name ="codepostal" class="validate">
 							<label for="codepostal">Code Postal</label>
 						</div>
-					
+                        <div class="input-field col s12 ">
+                            <input id="adresse" type="text"  name ="adresse" class="validate">
+                            <label for="adresse">Adresse</label>
+                        </div>
 						
 					
 						<div class="input-field col s12">
@@ -98,16 +101,15 @@ if(isset($_POST['action'])){
 			<div class="col s2"></div>
 		</form>
 </div>
+
+
+<?php include "../core/footer.php" ;?>
     <!--Modal Connexion -->
     <?php include "../core/mes_modals.php";?>
-<?php include "../core/footer.php" ;?>
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="../core/js/materialize.js"></script>
 <script src="../core/js/init.js"></script>
 <script src="../core/js/monjs.js"></script>
 </body>
-
-
-
 </html>

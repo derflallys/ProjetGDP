@@ -23,7 +23,7 @@
         <br><br>
           <br><br><br><br><br><br>
         <div class="row center">
-          <h2 class="header col s12  light" style=" color: rgb(128,128,128)">Luttons contre le gaspillage alimentaire</h2>
+            <h2 class="header col s12  light" style=" color: rgb(128,128,128)"><b>Luttons contre le gaspillage alimentaire</b></h2>
         </div>
         <br><br>
           
@@ -42,9 +42,9 @@
         <div class="col s12 center">
           <h3><i class="mdi-content-send brown-text"></i></h3>
           <h4 style=" color: rgb(112,63,63)">A propos</h4>
-          <p class="left-align light">Notre problématique consiste à éradiquer le fait que les fournisseurs de produits alimentaires tel que les restaurants, les fast-food et les supermarchés jettent leur excès de produits à la poubelle.
+          <p class="left-align black-text"><b>Notre problématique consiste à éradiquer le fait que les fournisseurs de produits alimentaires tel que les restaurants, les fast-food et les supermarchés jettent leur excès de produits à la poubelle.
           Cette plateforme est destinée à mettre en relation les associations sociales  qui ont pour but d’aider et d’apporter une assistance bénévole aux personnes démunies, notamment dans le domaine alimentaire par l'accès à des repas ou produits alimentaires gratuits, et les fournisseurs de produits alimentaires.</p>
-        </div>
+        </b></div>
       </div>
 
     </div>
@@ -54,7 +54,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
-          <h3 class="header col s12 light" style=" color: rgb(128,128,128)">Une plateforme interactive de communication</h3>
+            <h3 class="header col s12 light" style=" color: rgb(128,128,128)"><b>Une plateforme interactive de communication</b></h3>
         </div>
       </div>
     </div>

@@ -32,13 +32,16 @@ $bd= BD;
 </head>
 <body>
 <?php include "../core/header_donateurs.php" ;?>
+<div class="container">
+    <div class="row"  id="info">
+        <div class="col s8 offset-s2">
 <?php
 
 
  echo '
  
 
- 				<ul class="collection col s8 offset-2 hoverable " id="info">
+ 				<ul class="collection col s12  hoverable ">
                         <li class="collection-header"><h4>Information Donateurs</h4></li>
 
                         <li class="collection-item dismissable left-align"><div><b >Nom :</b><a href="#!" class="secondary-content"> <b>'.$res_dona["nom"].'</a></b></div></li>
@@ -51,55 +54,60 @@ $bd= BD;
                        
 
                         <li class="collection-item dismissable left-align"><div><b >Type Donateurs:</b><a href="#!" class="secondary-content"><b>'.$res_dona["type_donateurs"].'</a></b></div></li>
-						
-						                       
-                        <center>	<button class="btn waves-effect waves-light" id="modif" >Modifier mes Informations
-						    <i class="material-icons right">send</i>
-						  </button></center>
-
-                 
 
                            </ul> 
                           ' ;
 
  
- ?>	
- 					<div class="row" id="modifInfo">
+ ?>
+            <div class="col s12 center">
+                <button class="btn waves-effect waves-light" id="modif" >Modifier mes Informations
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </div>
+            <div class="row" id="modifInfo">
  					<form action="modification.php" method="POST">
-						<div class="input-field col s12">
-					<?php echo 	'<input placeholder="Nom de votre Association" id="nom"  name ="nom" type="text" value='.$res_dona["nom"].' class="validate"> x
-								<label for="nom">Nom</label>
-							</div>
+                        <?php echo     '
+                        <div class="input-field col s12">
+                            <input placeholder="Nom de votre Association" id="nom"  name ="nom" type="text" value='.$res_dona["nom"].' class="validate">
+                            <label for="nom">Nom</label>
+                        </div>
 
-							<div class="input-field col s6">
-								<input id="telephone" type="text"  name ="telephone" class="validate" value='.$res_dona["telephone"].'>
-								<label for="telephone">Telephone</label>
-							</div>
+                        <div class="input-field col s6">
+                            <input id="telephone" type="text"  name ="telephone" class="validate"  value='.$res_dona["telephone"].'>
+                            <label for="telephone">Telephone</label>
+                        </div>
 
 
-							 <div class="input-field col s6">
-								<input id="codepostal" type="text"  name ="codepostal" class="validate" value='.$res_dona["codepostal"].'>
-								<label for="codepostal">Code Postal</label>
-							</div>
-						
-							
-						
-							<div class="input-field col s12">
-								<input id="email" type="email"  name="email" class="validate" value='.$res_dona["email"].'>
-								<label for="email">Email</label>
-							</div>
-						
-							<div class="input-field col s12">
-								<input id="password" type="password"  name="password" class="validate">
-								<label for="password">Password</label>
-							</div>
+                        <div class="input-field col s6">
+                            <input id="codepostal" type="text"  name ="codepostal" class="validate" value='.$res_dona["codepostal"].'>
+                            <label for="codepostal">Code Postal</label>
+                        </div>
+                        <div class="input-field col s12 ">
+                            <input id="adresse" type="text"  name ="adresse" class="validate" value='.$res_dona["adresse"].'>
+                            <label for="adresse">Adresse</label>
+                        </div>
 
-							<div class="input-field col s12">
-								<input id="type_donateurs" name ="type_donateurs" type="text" class="validate" value='.$res_dona["type_donateurs"].'>
-								<label for="type_donateurst">Type Donateur</label>
-							</div>
-				
-							'?>
+
+                        <div class="input-field col s12">
+                            <input id="email" type="email"  name="email" class="validate" value='.$res_dona["email"].'>
+                            <label for="email">Email</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <input id="password" type="password"  name="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <input id="type_donateurs" name ="type_donateurs" type="text" class="validate" value='.$res_dona["type_donateurs"].'>
+                            <label for="type_donateurst">Type Donateur</label>
+                        </div>
+
+                      
+	'?>
 							
 							<button class="btn waves-effect waves-light" type="submit" name="action">Submit
 						    <i class="material-icons right">send</i>
@@ -107,6 +115,7 @@ $bd= BD;
 						 </form>
 			</div>
 
+</div>
 <?php include "../core/footer.php" ;?>
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

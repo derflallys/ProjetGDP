@@ -3,17 +3,18 @@
             <div class="nav-wrapper container">
                 <a id="logo-container" href="../index.php" class="brand-logo"><img class="circle responsive-img" src="../core/img/logo.jpg" alt="Logo"></a>
                 <ul class="right hide-on-med-and-down">
+                    <li><a href="../m_pub/affichePublication.php" ><i class="material-icons left">view_list</i>Les Publications</a></li>
                     <li><a href="#" class="dropdown-button" data-activates="moncompte"><i class="material-icons left">face</i>Mon Compte</a></li>
-                    <li><a href="#"><i class="material-icons left">exit_to_app</i>Deconnexion</a></li>
+                    <li><a href="../m_users/deconnexion.php"><i class="material-icons left">exit_to_app</i>Deconnexion</a></li>
                 </ul>
 
 
-<form class="col s12" method="POST" action="../m_users/Informations.php">
+
 
 
                 <ul id="moncompte" class="dropdown-content">
                     <li><a href="../m_users/Informations.php">Mes Informations</a></li>
-                    <li><a href="../m_pub/mesdemandes.php">Mes Publications</a></li>
+                    <li><a href="../m_pub/mespublications.php">Mes Demandes</a></li>
                 </ul>
 
                 </form>

@@ -12,8 +12,9 @@ if(isset($_POST['action'])){
 $nom_restaurant=$_POST['nom_restaurant'];
 $adresse_restaurant=$_POST['adresse_restaurant'];
 $codepostal=$_POST['codepostal'];
-$password=$_POST['password'];
+    $password=hash('sha256',$_POST['password']);
 $email=$_POST['email'];
+    $tel=$_POST['telephone'];
 $type_restaurant=$_POST['type_restaurant'];
 //$tel=$_POST['tel'];
 $contrat=$_POST['contrat'];
@@ -26,8 +27,8 @@ $mdp=hash('sha256',$_POST['password']);
 
 if ($veriff) {
 
-$insert=$connexion->prepare(" INSERT INTO $bd.fournisseurs(nom_restaurant, adresse_restaurant, codepostal, email, contrat,type_restaurant,password) VALUES (?,?,?,?,?,?,?)");
-$insert->execute(array($nom_restaurant,$adresse_restaurant,$codepostal,$email,$contrat,$type_restaurant,$password));
+$insert=$connexion->prepare(" INSERT INTO $bd.fournisseurs(nom_restaurant, adresse_restaurant, codepostal, email, contrat,type_restaurant,password,tel) VALUES (?,?,?,?,?,?,?,?)");
+$insert->execute(array($nom_restaurant,$adresse_restaurant,$codepostal,$email,$contrat,$type_restaurant,$password,$tel));
 }
 else{
 	$_SESSION['erreur_ins']="Cet email appartient deja à quelqu'un !";
@@ -41,7 +42,7 @@ else{
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-	<title>Accueil</title>
+	<title>Inscription Fournisseurs</title>
 
 	<!-- CSS  -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -61,59 +62,55 @@ else{
 			} 
 		echo '</h1>';
 	?>
-
-	<div class="row">
-		<form class="col s12" method="POST" action="#">
-
-		 <div class="col s2"></div>
-		 <div class="col s8">
+<div class="container">
+	 <div class="col s8 offset-s2">
+             <form class="col s12" method="POST" action="#">
 			<div class="row">
-				<div class="input-field col s6">
-					<input placeholder="Placeholder" id="nom_restaurant"  name ="nom_restaurant" type="text" class="validate">
+				<div class="input-field col s12">
+					<input placeholder="Nom Fournisseur" id="nom_restaurant"  name ="nom_restaurant" type="text" class="validate" required>
 					<label for="nom">Nom</label>
 				</div>
 				
 				<div class="input-field col s6">
-					<input placeholder="Placeholder" id="adresse_restaurant"  name ="adresse_restaurant" type="text" class="validate">
+					<input  id="adresse_restaurant"  name ="adresse_restaurant" type="text" class="validate" required>
 					<label for="adresse">Adresse</label>
 				</div>
 				<div class="input-field col s6">
-					<input id="codepostal" type="text"  name ="codepostal" class="validate">
+					<input id="codepostal" type="text"  name ="codepostal" class="validate" required>
 					<label for="codepostal">Code Postal</label>
 				</div>
-				
-			   
-				<div class="input-field col s12">
-					<input id="password" type="password"  name="password" class="validate">
+                <div class="input-field col s12">
+                    <input id="telephone" type="text"  name ="telephone" class="validate" required>
+                    <label for="codepostal">Telephone</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="email" type="email"  name="email" class="validate" required>
+                    <label for="email">Email</label>
+                </div>
+				<div class="input-field col s6">
+					<input id="password" type="password"  name="password" class="validate" required>
 					<label for="password">Password</label>
 				</div>
-			
-			
-				<div class="input-field col s12">
-					<input id="email" type="email"  name="email" class="validate">
-					<label for="email">Email</label>
-				</div>
-			
-			
 
 				<div class="input-field col s12">
-					<input id="type_restaurant" name ="type_restaurant" type="text" class="validate">
+					<input id="type_restaurant" name ="type_restaurant" type="text" class="validate" required>
 					<label for="type_restaurant">Type de Restaurant</label>
-				</div>
-					<div class="input-field col s12">
-					<input id="contrat" name ="contrat" type="text" class="validate">
-					<label for="contrat">Contrat</label>
-				</div>
-	
-	
-				
-	<button class="btn waves-effect waves-light" type="submit" name="action">Submit
-    <i class="material-icons right">send</i>
-  </button>
+                </div>
+                <div class="input-field col s12">
+                    <select name="contrat" required>
+                        <option value="" disabled selected>Comment donnez vous ?</option>
+                        <option value="true">Avec Contrat</option>
+                        <option value="false">Sans Contrat</option>
+                    </select>
+                </div>
+                <div class="col s12 center">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Envoyer
+                    <i class="material-icons right">send</i>
+                    </button>
+                </div>
 			</div>
-			</div>
-			<div class="col s2"></div>
-		</form>
+             </form>
+         </div>
 </div>
     <!--Modal Connexion -->
     <?php include "../core/mes_modals.php";?>
